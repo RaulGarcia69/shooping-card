@@ -32,7 +32,7 @@
                     <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
                     <td class="actions" data-th="">
                         <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
-                        <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}"><i class="fa fa-trash-o"></i></button>
+                        <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}" data-name="{{ $details['name'] }}" data-quantity="{{ $details['quantity'] }}"><i class="fa fa-trash-o"></i></button>
                     </td>
                 </tr>
             @endforeach
@@ -67,7 +67,7 @@
         $(".remove-from-cart").click(function (e) {
             e.preventDefault();
             var ele = $(this);
-            if(confirm("Are you sure")) {
+            if(confirm("Quieres eliminar "+ ele.attr("data-quantity")+" " +ele.attr("data-name") + " del carrito")) {
                 $.ajax({
                     url: '{{ url('remove-from-cart') }}',
                     method: "DELETE",

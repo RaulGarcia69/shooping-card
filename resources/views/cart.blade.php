@@ -31,7 +31,7 @@
                     </td>
                     <td data-th="Subtotal" class="text-center" id="subtotal{{ $id }}">${{ $details['price'] * $details['quantity'] }}</td>
                     <td class="actions" data-th="">
-                        <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
+                        <!-- <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button> -->
                         <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}" data-name="{{ $details['name'] }}" data-quantity="{{ $details['quantity'] }}"><i class="fa fa-trash-o"></i></button>
                     </td>
                 </tr>

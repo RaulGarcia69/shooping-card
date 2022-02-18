@@ -29,7 +29,7 @@
                     <td data-th="Quantity">
                         <input type="number" id="quantity" value="{{ $details['quantity'] }}" class="form-control quantity update-quantity" max="5001" data-quantity="{{ $details['quantity'] }}"/>
                     </td>
-                    <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
+                    <td data-th="Subtotal" class="text-center" id="subtotal">${{ $details['price'] * $details['quantity'] }}</td>
                     <td class="actions" data-th="">
                         <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
                         <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}" data-name="{{ $details['name'] }}" data-quantity="{{ $details['quantity'] }}"><i class="fa fa-trash-o"></i></button>
@@ -80,9 +80,13 @@
         });
         $(".update-quantity").change(function (e) {
             var var1 = $("#price").attr('data-value');
+            var var2 = document.getElementById("quantity").value
             var1=parseInt(var1);
-            var1=var1
-            $("#price").text("$"+var1);
+            var1=var1*var2
+            $("#subtotal").text("$"+var1);
+            $("#cart-dropmenu").text(var2);
+            $("#cart-dropmenu-i").text(var2);
+            $("#layout-quantity").text("Quantity: "+var2);
         });
     </script>
 @endsection

@@ -24,7 +24,7 @@
             <div class="dropdown">
                 @if(session('cart'))
                     <button type="button" class="btn btn-info" data-toggle="dropdown">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ $total }}</span>
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger" id="cart-dropmenu">{{ $total }}</span>
                     </button>
                 @else 
                     <button type="button" class="btn btn-info" data-toggle="dropdown">
@@ -35,7 +35,7 @@
                     <div class="row total-header-section">
                         <div class="col-lg-6 col-sm-6 col-6">
                             @if(session('cart'))
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger"> {{ $total }}</span>
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger" id="cart-dropmenu-i"> {{ $total }}</span>
                             @else
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger"> {{ count((array) session('cart')) }}</span>
                             @endif
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
                                     <p>{{ $details['name'] }}</p>
-                                    <span class="price text-info"> ${{ $details['price'] }}</span> <span class="count"> Quantity: {{ $details['quantity'] }}</span>
+                                    <span class="price text-info"> ${{ $details['price'] }}</span> <span class="count" id="layout-quantity"> Quantity: {{ $details['quantity'] }}</span>
                                 </div>
                             </div>
                         @endforeach

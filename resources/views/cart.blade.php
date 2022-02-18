@@ -27,7 +27,7 @@
                     </td>
                     <td data-th="Price">${{ $details['price'] }}</td>
                     <td data-th="Quantity">
-                        <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity" max="5001"/>
+                        <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-quantity" max="5001"/>
                     </td>
                     <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
                     <td class="actions" data-th="">
@@ -77,6 +77,9 @@
                     }
                 });
             }
+        });
+        $(".update-quantity").change(function (e) {
+            alert("ty")
         });
     </script>
 @endsection

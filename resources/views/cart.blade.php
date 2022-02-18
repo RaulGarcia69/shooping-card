@@ -25,11 +25,11 @@
                             </div>
                         </div>
                     </td>
-                    <td data-th="Price" id="price" data-value="{{ $details['price'] }}">${{ $details['price'] }}</td>
+                    <td data-th="Price" id="price{{ $id }}" data-value="{{ $details['price'] }}">${{ $details['price'] }}</td>
                     <td data-th="Quantity">
-                        <input type="number" id="quantity" value="{{ $details['quantity'] }}" class="form-control quantity update-quantity" max="5001" data-quantity="{{ $details['quantity'] }}"/>
+                        <input type="number" id="quantity{{ $id }}" value="{{ $details['quantity'] }}" data-id="{{ $id }}" class="form-control quantity update-quantity" max="5001" min="0" onchange="prueba({{ $id }});"/>
                     </td>
-                    <td data-th="Subtotal" class="text-center" id="subtotal">${{ $details['price'] * $details['quantity'] }}</td>
+                    <td data-th="Subtotal" class="text-center" id="subtotal{{ $id }}">${{ $details['price'] * $details['quantity'] }}</td>
                     <td class="actions" data-th="">
                         <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
                         <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}" data-name="{{ $details['name'] }}" data-quantity="{{ $details['quantity'] }}"><i class="fa fa-trash-o"></i></button>
@@ -78,15 +78,33 @@
                 });
             }
         });
+        
         $(".update-quantity").change(function (e) {
-            var var1 = $("#price").attr('data-value');
-            var var2 = document.getElementById("quantity").value
+            e.preventDefault();
+           var ele = $(this);
+           var var1= $(this).val()
+            $.ajax({
+               url: '{{ url('update-cart') }}',
+               method: "patch",
+               data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id"), quantity: var1},
+               success: function (response) {
+                   window.location.reload();
+               }
+            });
+            
+        });
+        
+        /*
+        function prueba(id) {
+            var var1 = $("#price"+id).attr('data-value');
+            var var2 = document.getElementById("quantity"+id).value
             var1=parseInt(var1);
             var1=var1*var2
-            $("#subtotal").text("$"+var1);
-            $("#cart-dropmenu").text(var2);
-            $("#cart-dropmenu-i").text(var2);
-            $("#layout-quantity").text("Quantity: "+var2);
-        });
+            $("#subtotal"+id).text("$"+var1);
+            //$("#cart-dropmenu").text(var2);
+            //$("#cart-dropmenu-i").text(var2);
+            $("#layout-quantity"+id).text("Quantity: "+var2);
+        }
+        */
     </script>
 @endsection

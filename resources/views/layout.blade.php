@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
                                     <p>{{ $details['name'] }}</p>
-                                    <span class="price text-info"> ${{ $details['price'] }}</span> <span class="count" id="layout-quantity"> Quantity: {{ $details['quantity'] }}</span>
+                                    <span class="price text-info"> ${{ $details['price'] }}</span> <span class="count" id="layout-quantity{{ $id }}"> Quantity: {{ $details['quantity'] }}</span>
                                 </div>
                             </div>
                         @endforeach

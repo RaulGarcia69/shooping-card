@@ -105,6 +105,24 @@
     padding-bottom: 5%;
 }
 
+img:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+img {
+    transition: 0.3s;
+}
+
+.scale:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.scale {
+    transition: 0.3s;
+}
+
 @media screen and (max-width: 600px) {
     table#cart tbody td .form-control {
         width: 20%;

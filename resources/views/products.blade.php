@@ -10,8 +10,8 @@
                         <div class="caption">
                             <h4>{{ str_limit($product->name, 18, '') }}</h4>
                             <p class="text-secondary">{{ str_limit(strtolower($product->description), 50) }}</p>
-                            <p><strong>Price: </strong> {{ $product->price }}$</p>
-                            <p class="btn-holder"><a href="{{ url('add-to-cart/'.$product->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
+                            <p class="float-left"><strong>Price: </strong> {{ $product->price }}</p><p class="text-success"><strong>&nbsp;$</strong> </p>
+                            <p class="btn-holder"><a href="{{ url('add-to-cart/'.$product->id) }}" class="btn btn-warning btn-block text-center scale" role="button">Add to cart</a> </p>
                         </div>
                     </div>
                 </div>

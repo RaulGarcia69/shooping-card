@@ -13,20 +13,32 @@
 </head>
 <body>
 <div class="container">
-    <?php $total = 0 ?>
-    @foreach(session('cart') as $id => $details)
-        <?php $total += $details['quantity'] ?>
-    @endforeach
+    @if(session('cart'))
+        <?php $total = 0 ?>
+        @foreach(session('cart') as $id => $details)
+            <?php $total += $details['quantity'] ?>
+        @endforeach
+    @endif
     <div class="row">
         <div class="col-lg-12 col-sm-12 col-12 main-section">
             <div class="dropdown">
-                <button type="button" class="btn btn-info" data-toggle="dropdown">
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ $total }}</span>
-                </button>
+                @if(session('cart'))
+                    <button type="button" class="btn btn-info" data-toggle="dropdown">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ $total }}</span>
+                    </button>
+                @else 
+                    <button type="button" class="btn btn-info" data-toggle="dropdown">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                    </button>
+                @endif
                 <div class="dropdown-menu">
                     <div class="row total-header-section">
                         <div class="col-lg-6 col-sm-6 col-6">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger"> {{ $total }}</span>
+                            @if(session('cart'))
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger"> {{ $total }}</span>
+                            @else
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger"> {{ count((array) session('cart')) }}</span>
+                            @endif
                         </div>
                         <?php $total = 0 ?>
                         @foreach((array) session('cart') as $id => $details)
